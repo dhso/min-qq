@@ -1,22 +1,14 @@
 package com.minws.frame.kit;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 public class HttpUtils extends org.apache.commons.lang3.StringUtils {
 
@@ -39,7 +31,8 @@ public class HttpUtils extends org.apache.commons.lang3.StringUtils {
 	}
 
 	public static String httpGet(String url) throws ClientProtocolException, IOException {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
+		return url;
+		/*CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet(url);
 		CloseableHttpResponse response = null;
 		RequestConfig requestconfig = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).setCookieSpec(CookieSpecs.BEST_MATCH).build();
@@ -56,11 +49,12 @@ public class HttpUtils extends org.apache.commons.lang3.StringUtils {
 				e.printStackTrace();
 			}
 		}
-		return str;
+		return str;*/
 	}
 
 	public static <T> T httpGetClazz(String url, Class<T> t) throws ClientProtocolException, IOException {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
+		return null;
+		/*CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpGet httpget = new HttpGet(url);
 		CloseableHttpResponse response = null;
 		RequestConfig requestconfig = RequestConfig.custom().setSocketTimeout(5000).setConnectTimeout(5000).setCookieSpec(CookieSpecs.BEST_MATCH).build();
@@ -80,7 +74,7 @@ public class HttpUtils extends org.apache.commons.lang3.StringUtils {
 				e.printStackTrace();
 			}
 		}
-		return tClass;
+		return tClass;*/
 	}
 
 	/**

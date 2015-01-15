@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.minws</groupId>
-	<artifactId>blog</artifactId>
+	<artifactId>qq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>min-blog</name>
+	<name>min-qq</name>
 	<url>http://www.minws.com</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,14 +20,14 @@
 			</activation>
 			<properties>
 				<log4j.rootLogger>DEBUG, stdout, file</log4j.rootLogger>
-				<config.name>blog.config.properties</config.name>
+				<config.name>qq.config.properties</config.name>
 			</properties>
 		</profile>
 		<profile>
 			<id>ace</id>
 			<properties>
 				<log4j.rootLogger>DEBUG, aceAppender</log4j.rootLogger>
-				<config.name>blog.config.properties</config.name>
+				<config.name>qq.config.properties</config.name>
 			</properties>
 		</profile>
 	</profiles>
@@ -46,6 +46,10 @@
 			<id>3rd party</id>
 			<name>3rd party</name>
 			<url>http://ims-maven-repo/nexus/content/repositories/thirdparty</url>
+		</repository>
+		<repository>
+			<id>wener</id>
+			<url>http://hi.wener.me/maven-repository</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -116,10 +120,60 @@
 		</dependency>
 		<!-- httpclient -->
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.6</version>
-		</dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.2.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore-nio</artifactId>
+            <version>4.2.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.2.5</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.2.3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
+            <version>4.0-beta3</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		<!-- ace libs -->
 		<dependency>
 			<groupId>com.alibaba.appengine</groupId>
@@ -157,6 +211,9 @@
 			<artifactId>WebCollector</artifactId>
 			<version>1.42</version>
 		</dependency>
+		<!-- iqq -->
+		<!-- <dependency> <groupId>iqq.im</groupId> <artifactId>webqq-core</artifactId> 
+			<version>1.0</version> </dependency> -->
 	</dependencies>
 
 	<build>

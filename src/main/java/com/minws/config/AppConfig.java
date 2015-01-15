@@ -13,6 +13,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.minws.blog.ctrl.BlogController;
+import com.minws.blog.ctrl.WebQQClientKit;
 import com.minws.frame.kit.HttpUtils;
 import com.minws.frame.kit.properties.ProsMap;
 
@@ -25,7 +26,7 @@ public class AppConfig extends JFinalConfig {
 	 * 配置常量
 	 */
 	public void configConstant(Constants me) {
-		me.setDevMode(ProsMap.getBooPro("blog.devMode"));
+		me.setDevMode(ProsMap.getBooPro("qq.devMode"));
 		me.setViewType(ViewType.FREE_MARKER); // 设置视图类型，默认为FreeMarker
 	}
 
@@ -33,7 +34,7 @@ public class AppConfig extends JFinalConfig {
 	 * 配置路由
 	 */
 	public void configRoute(Routes me) {
-		me.add("/", BlogController.class, "/blog");
+		me.add("/", BlogController.class, "/qq");
 	}
 
 	/**
@@ -41,10 +42,10 @@ public class AppConfig extends JFinalConfig {
 	 */
 	public void configPlugin(Plugins me) {
 		// c3p0 数据源插件
-		C3p0Plugin cp = new C3p0Plugin(ProsMap.getStrPro("blog.jdbcUrl"), ProsMap.getStrPro("blog.user"), ProsMap.getStrPro("blog.password"));
-		me.add(cp);
+		//C3p0Plugin cp = new C3p0Plugin(ProsMap.getStrPro("qq.jdbcUrl"), ProsMap.getStrPro("qq.user"), ProsMap.getStrPro("qq.password"));
+		//me.add(cp);
 		// ActiveRecrod 支持插件
-		me.add(new ActiveRecordPlugin(cp));
+		//me.add(new ActiveRecordPlugin(cp));
 	}
 
 	/**
@@ -73,6 +74,8 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void afterJFinalStart() {
 		//HttpUtils.setProxy(ProsMap.getStrPro("blog.local.proxy.http.host"), ProsMap.getStrPro("blog.local.proxy.http.port"), ProsMap.getStrPro("blog.local.proxy.auth.username"), ProsMap.getStrPro("blog.local.proxy.auth.password"));
+		WebQQClientKit webQQClientKit = new WebQQClientKit("425232065", "425232065(qq)");
+		webQQClientKit.login();
 	}
 
 }
